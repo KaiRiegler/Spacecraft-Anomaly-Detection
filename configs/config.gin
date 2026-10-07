@@ -1,0 +1,40 @@
+########## Main ##########
+wandb_init.project = "test_ae"
+wandb_init.entity = "your-entity"
+wandb_init.key = "xxx"
+
+########## Architectures ##########
+LSTM_Autoencoder.time_steps = 8
+LSTM_Autoencoder.input_dim = 1
+LSTM_Autoencoder.autoencoder_units = [128, 64]
+LSTM_Autoencoder.dropout_rate = 0.1
+
+########## Training ##########
+Trainer.lr = 0.001
+Trainer.total_steps = 1e3
+Trainer.log_interval = 1e1
+Trainer.ckpt_interval = 1e3
+plot_result.win_size = 8
+plot_result.win_offset = 2
+
+########## Evaluation ##########
+detect_anomalies.threshold = 0.1
+
+########## Input pipeline ##########
+#--- Used Datasets ---#
+load.name = 'nasa'
+load.data_dir = '/home/data/'
+
+#--- SMAP & MSL Dataset Parameters ---#
+load.data_dir_train = 'NASA/train'
+load.data_dir_test = 'NASA/test'
+load.val_split = 0.2
+load.ts_name = "P-3"
+load.win_size = 8
+load.win_offset = 2
+
+#--- Prepare Parameters ---#
+prepare.batch_size = 4
+prepare.caching = True
+prepare.repeat = True
+prepare.augmentation = False
